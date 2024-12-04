@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        background: linear-gradient(skyblue, white);
+    }
+    
+    #one {
+        border: 10px solid white;
+        padding: 10px;
+        margin: 450px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    
+    li {
+        color: black;
+    }
+    
+    button {
+        width: 350px;
+        text-align: left;
+        background-color: white;
+    }
+</style>
+
+<body>
+    <div style="height: 1000px;" id="one">
+        <h1 style="text-align: center; color: black;">Quiz</h1>
+        <h3 style="color: red;">Questions Appear here</h3>
+        <div>
+            <ol>
+                <li>Thiruvananthapuram is the capital of</li>
+
+                <button><input type="radio" id="1" name="ans"> Telengana</button> <br>
+                <button><input type="radio" id="2" name="ans"> Andhrapradesh</button> <br>
+                <button><input type="radio" id="3" name="ans"> Tamilnadu</button> <br>
+                <button><input type="radio" id="4" name="ans"> kerala</button> <br>
+
+                <li>Which among the following is the capital of Meghalaya?</li>
+                <button><input type="radio" id="5" name="ans1"> Gujarat</button><br>
+                <button><input type="radio" id="6" name="ans1"> Andhrapradesh </button><br>
+                <button><input type="radio" id="7" name="ans1"> Shillong </button><br>
+                <button><input type="radio" id="8" name="ans1"> kerala</button> <br>
+                <li>What is the capital of Maharashtra?</li>
+                <button><input type="radio" id="9" name="ans2"> kolkata</button><br>
+                <button><input type="radio" id="10" name="ans2"> Amaravathi</button><br>
+                <button><input type="radio" id="11" name="ans2"> Hyderbad</button> <br>
+                <button><input type="radio" id="12" name="ans2"> Mumbai</button> <br>
+                <li> Which city is the capital of Karnataka?</li>
+                <button><input type="radio" id="13" name="ans3"> mangloor</button><br>
+                <button><input type="radio" id="14" name="ans3"> mumbai</button> <br>
+                <button><input type="radio" id="15" name="ans3"> Hyderbad</button> <br>
+                <button><input type="radio" id="16" name="ans3"> Bengaluru</button> <br>
+
+                <li> Which city serves as the capital of Tamil Nadu?</li>
+                <button><input type="radio" id="13" name="ans4"> mangloor</button><br>
+                <button><input type="radio" id="14" name="ans4"> madras</button><br>
+                <button><input type="radio" id="15" name="ans4"> chennai</button> <br>
+                <button><input type="radio" id="16" name="ans4"> Bengaluru </button><br>
+                <li> Which city serves as the capital of AndhraPradesh?</li>
+                <button><input type="radio" id="17" name="ans5"> Amaravati</button><br>
+                <button><input type="radio" id="18" name="ans5"> vizag</button><br>
+                <button><input type="radio" id="19" name="ans5"> kurnool</button> <br>
+                <button><input type="radio" id="20" name="ans5"> All the above</button><br>
+
+            </ol>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn btn-primary" onclick="checkAnswers()">Submit</button>
+        </div>
+
+
+    </div>
+    <script>
+        // Correct answers
+        const correctAnswers = {
+            ans: "kerala", // For question 1
+            ans1: "Shillong", // For question 2
+            ans2: "Mumbai", // For question 3
+            ans3: "Bengaluru", // For question 4
+            ans4: "chennai", // For question 5
+            ans5: "Amaravati", // For question 6
+        };
+
+        function checkAnswers() {
+            let score = 0;
+
+            // Get all the questions
+            for (const [question, correctAnswer] of Object.entries(correctAnswers)) {
+                // Get the selected answer for this question
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+
+                if (selectedOption) {
+                    // Check if the selected option matches the correct answer
+                    const answerText = selectedOption.parentElement.textContent.trim();
+                    if (answerText === correctAnswer) {
+                        score++;
+                    }
+                }
+            }
+
+            // Display the result
+            alert(`You scored ${score} out of ${Object.keys(correctAnswers).length}`);
+        }
+    </script>
+    <a href="./quiz3.html">Go To next </a>
+
+
+</body>
+
+</html>
